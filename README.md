@@ -16,9 +16,25 @@ The **Wireguard-IP-Info** Python script leverages the power of `paramiko`, `re`,
 
 ### Usage:
 
+#### Command Line Interface (CLI) Version:
+
 1. Make sure to have the `paramiko` library installed using `pip install paramiko`.
 2. Modify the `ssh_host`, `ssh_port`, `ssh_username`, and `ssh_password` variables in the script with your server's credentials.
 3. Execute the script, and it will establish an SSH connection, retrieve tunnel data, and provide detailed insights for each tunnel.
+
+```bash
+main.py
+```
+
+#### Graphical User Interface (GUI) Version:
+
+1. Ensure you have the required libraries installed, including `paramiko`, `requests`, and `tkinter`.
+2. Modify the `ssh_host`, `ssh_port`, `ssh_username`, and `ssh_password` variables in the script with your server's credentials.
+3. Execute the script, and it will open a GUI window where you can click a button to update the information displayed.
+
+```bash
+gui.py
+```
 
 Remember to handle sensitive information like SSH credentials and passwords with care. Always ensure proper permissions and adhere to security best practices.
 
