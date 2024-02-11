@@ -34,9 +34,15 @@ def main():
         allowed_ips_info = re.findall(r'allowed ips: ([\d.]+/\d+)', output)
         endpoint_info = re.findall(r'endpoint: ([\d.]+):', output)
 
+        ip_isp_info = []
         for allowed_ips, endpoint_ip in zip(allowed_ips_info, endpoint_info):
             isp = get_isp(endpoint_ip)
-            print(f"IP: {allowed_ips.split('/')[0]}, Endpoint: {endpoint_ip}, ISP: {isp}")
+            ip_isp_info.append((allowed_ips.split('/')[0], endpoint_ip, isp))
+
+        sorted_ip_isp_info = sorted(ip_isp_info, key=lambda x: [int(i) for i in x[0].split('.')])
+
+        for ip, endpoint_ip, isp in sorted_ip_isp_info:
+            print(f"IP: {ip}, Endpoint: {endpoint_ip}, ISP: {isp}")
 
     except paramiko.AuthenticationException:
         print("Authentication failed, please verify your credentials.")
